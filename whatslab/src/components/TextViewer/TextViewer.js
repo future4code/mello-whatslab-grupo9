@@ -17,7 +17,7 @@ export class TextViewer extends React.Component {
   render() {
     return (
       <MessageContainer>
-        <TextInput />
+        <TextInput>{this.props.usuario}</TextInput>
       </MessageContainer>
     );
   }
