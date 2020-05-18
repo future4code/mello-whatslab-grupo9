@@ -5,11 +5,26 @@ const InputContainer = styled.div`
   width: 100%;
 `;
 
+const dadosMensagem = [
+  {
+  usuario: "",
+  mensagem: ""
+  }
+]
+
 export class TextInput extends React.Component {
+
   state = {
-    usuario: "",
-    mensagem: "",
+
+    dadosMensagem: dadosMensagem
+    
   };
+
+  addMensagem = (nMensagem) => {
+    const novaMensagem = [...this.state.dadosMensagem, nMensagem]
+
+    this.setState({ dadosMensagem: novaMensagem })
+  } 
 
   onChangeMensagem = (event) => {
     this.setState({
@@ -23,17 +38,17 @@ export class TextInput extends React.Component {
       <InputContainer>
         <input
           placeholder={"Usuário"}
-          value={this.state.value}
+          value={this.state.usuario}
           onChange={this.onChangeTextos}
         />
 
         <input
           placeholder={"Mensagem"}
-          value={this.state.value}
+          value={this.state.mensagem}
           onChange={this.onChangeTextos}
         />
 
-        <button>Enviar</button>
+        <button onClick={this.addMensagem}>Enviar</button>
       </InputContainer>
     );
   }
